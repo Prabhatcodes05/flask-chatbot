@@ -1,4 +1,5 @@
 Flask
 transformers
 tensorflow
+tf-keras
 gunicorn

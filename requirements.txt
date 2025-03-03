@@ -1,4 +1,4 @@
 Flask
 transformers
-torch
+tensorflow
 gunicorn

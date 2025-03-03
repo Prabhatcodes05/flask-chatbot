@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import TFAutoModelForCausalLM, AutoTokenizer
 import tensorflow as tf
 import os
 
@@ -24,7 +24,7 @@ def get_Chat_response(text):
 
     if tokenizer is None or model is None:
         tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-small", from_tf=True)
-        model = AutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-small", from_tf=True)
+        model = TFAutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-small", from_tf=True)
 
     for step in range(1):
         new_user_input_ids = tokenizer.encode(str(text) + tokenizer.eos_token, return_tensors='tf')

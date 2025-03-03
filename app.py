@@ -23,8 +23,8 @@ def get_Chat_response(text):
     global tokenizer, model, chat_history_ids
 
     if tokenizer is None or model is None:
-        tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-small", from_tf=True)
-        model = TFAutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-small", from_tf=True)
+        tokenizer = AutoTokenizer.from_pretrained("microsoft/DialoGPT-small") #removed from_tf=True
+        model = TFAutoModelForCausalLM.from_pretrained("microsoft/DialoGPT-small") #removed from_tf=True
 
     for step in range(1):
         new_user_input_ids = tokenizer.encode(str(text) + tokenizer.eos_token, return_tensors='tf')
@@ -41,3 +41,4 @@ def get_Chat_response(text):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
